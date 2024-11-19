@@ -6,8 +6,6 @@ public class Main {
         App app = new App();
         app.run();
         // new 다음은 class가 나와야한다
-
-
     }
 }
 
