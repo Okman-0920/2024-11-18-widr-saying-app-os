@@ -16,6 +16,7 @@ class App {
 
         Scanner scanner = new Scanner(System.in);
         System.out.println("== 명언 앱 ==");
+        int reg = 0;
 
         while(true) {
             System.out.print("명령) ");
@@ -23,10 +24,16 @@ class App {
 
             if (cmd.equals("등록")) {
                 System.out.print("명언 :");
-                scanner.nextLine();
+                String wiseSaying = scanner.nextLine();
 
                 System.out.print("작가 :");
-                scanner.nextLine();
+                String author = scanner.nextLine();
+
+                ++reg;
+                System.out.println(reg + "번 명언이 등록되었습니다");
+
+            } else if (cmd.equals("목록")) { //문자열은 == 으로 안됨
+
 
             } else if (cmd.equals("종료")) { //문자열은 == 으로 안됨
                 break;
