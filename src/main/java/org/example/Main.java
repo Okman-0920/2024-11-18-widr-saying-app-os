@@ -1,6 +1,5 @@
 package org.example;
 
-
 import java.util.Scanner;
 
 public class Main {
@@ -16,14 +15,20 @@ class App {
     public void run() {
 
         Scanner scanner = new Scanner(System.in);
-
         System.out.println("== 명언 앱 ==");
 
         while(true) {
             System.out.print("명령) ");
             String cmd = scanner.nextLine();
 
-            if (cmd.equals("종료")) { //문자열은 == 으로 안됨
+            if (cmd.equals("등록")) {
+                System.out.print("명언 :");
+                scanner.nextLine();
+
+                System.out.print("작가 :");
+                scanner.nextLine();
+
+            } else if (cmd.equals("종료")) { //문자열은 == 으로 안됨
                 break;
             }
         }
