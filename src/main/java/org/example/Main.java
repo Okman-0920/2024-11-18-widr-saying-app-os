@@ -16,7 +16,7 @@ class App {
 
         Scanner scanner = new Scanner(System.in);
         System.out.println("== 명언 앱 ==");
-        int reg = 0;
+        int lastId = 0; // 마지막으로 등록된 ID
 
         while(true) {
             System.out.print("명령) ");
@@ -29,8 +29,9 @@ class App {
                 System.out.print("작가 :");
                 String author = scanner.nextLine();
 
-                ++reg;
-                System.out.println(reg + "번 명언이 등록되었습니다");
+                // 만약에 여기에 int reg = 1;을 선언하면 계속 반복이라 +2만될꺼
+                int reg = ++lastId;
+                System.out.println("%d번 명언이 등록되었습니다.".formatted(reg));
 
             } else if (cmd.equals("목록")) { //문자열은 == 으로 안됨
 
