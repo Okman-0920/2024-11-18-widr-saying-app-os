@@ -24,17 +24,22 @@ class App {
 
             if (cmd.equals("등록")) {
                 System.out.print("명언 :");
-                String wiseSaying = scanner.nextLine();
+                String content = scanner.nextLine();
 
                 System.out.print("작가 :");
                 String author = scanner.nextLine();
+                int id = ++lastId; // 이해를 돕기위해 강사님과 동일한 지역변수명으로 변경
+
+                WiseSaying wiseSaying = new WiseSaying();
+                wiseSaying.id = id;
+                wiseSaying.content = content;
+                wiseSaying.author = author;
 
                 // 만약에 여기에 int reg = 1;을 선언하면 계속 반복이라 +2만될꺼
-                int reg = ++lastId;
-                System.out.println("%d번 명언이 등록되었습니다.".formatted(reg));
+                System.out.println("%d번 명언이 등록되었습니다.".formatted(id));
+                // 내 코드: System.out.println(id + "번 명언이 등록되었습니다.");
 
             } else if (cmd.equals("목록")) { //문자열은 == 으로 안됨
-
 
             } else if (cmd.equals("종료")) { //문자열은 == 으로 안됨
                 break;
@@ -42,4 +47,10 @@ class App {
         }
         scanner.close();
     }
+}
+
+class WiseSaying {
+    int id;
+    String content;
+    String author;
 }
