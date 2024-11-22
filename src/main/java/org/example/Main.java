@@ -26,16 +26,19 @@ class App {
             if (cmd.equals("종료")) {
                 break;
             } else if(cmd.equals("등록")) {
+                System.out.print("작가:");
+                String author = scanner.nextLine();
+
                 System.out.print("명언:");
                 String content = scanner.nextLine();
 
-                System.out.print("작가:");
-                String author = scanner.nextLine();
                 int id = ++lastId;
 
                 WiseSaying wiseSaying = new WiseSaying(id, content, author);
 
                 lastWiseSaying = wiseSaying;
+
+                System.out.println(wiseSaying);
 
                 System.out.println("%d번 명언이 등록되었습니다.".formatted(id));
                 // 내 코드: System.out.println(id + "번 명언이 등록되었습니다.");
@@ -69,5 +72,11 @@ class WiseSaying {
         this.content = content;
         this.author = author;
     }
+
+    @Override
+    public String toString() {
+        return "WiseSating{" + "id=" + id + ", content=" + content + '/' + ", author=" + author + '/' + '}';
+    }
+
 }
 
