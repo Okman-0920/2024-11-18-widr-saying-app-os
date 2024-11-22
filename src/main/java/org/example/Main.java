@@ -17,6 +17,7 @@ class App {
         Scanner scanner = new Scanner(System.in);
         System.out.println("== 명언 앱 ==");
         int lastId = 0; // 마지막으로 등록된 ID
+        WiseSaying lastWiseSaying; // 위치를 소환할 수 있는 변수 작성 (기억하도록)
 
         while(true) {
             System.out.print("명령) ");
@@ -30,10 +31,10 @@ class App {
                 String author = scanner.nextLine();
                 int id = ++lastId; // 이해를 돕기위해 강사님과 동일한 지역변수명으로 변경
 
-                WiseSaying wiseSaying = new WiseSaying();
-                wiseSaying.id = id;
-                wiseSaying.content = content;
-                wiseSaying.author = author;
+                WiseSaying wiseSaying = new WiseSaying(id, content, author);
+
+                lastWiseSaying = wiseSaying;
+
 
                 // 만약에 여기에 int reg = 1;을 선언하면 계속 반복이라 +2만될꺼
                 System.out.println("%d번 명언이 등록되었습니다.".formatted(id));
@@ -53,4 +54,10 @@ class WiseSaying {
     int id;
     String content;
     String author;
+
+    public WiseSaying(int id, String content, String author) {
+        this.id = id;
+        this.content = content;
+        this.author = author;
+    }
 }
