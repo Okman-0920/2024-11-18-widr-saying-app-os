@@ -15,11 +15,11 @@ class App {
     WiseSaying[] wiseSayings;
     int wiseSayingsSize;
 
-    App() {
-        scanner = new Scanner(System.in);
-        lastId = 0;
-        wiseSayings = new WiseSaying[100];
-        wiseSayingsSize = 0;
+    public App() {
+        private scanner = new Scanner(System.in);
+        private lastId = 0;
+        private wiseSayings = new WiseSaying[100];
+        private wiseSayingsSize = 0;
     }
 
     public void run() {
@@ -44,7 +44,7 @@ class App {
         scanner.close();
     }
 
-    WiseSaying addWiseSaying(String content, String author) {
+    private WiseSaying addWiseSaying(String content, String author) {
         int id = ++lastId;
 
         WiseSaying wiseSaying = new WiseSaying(id, content, author);
@@ -71,16 +71,16 @@ class App {
         System.out.println("번호 / 작가 / 명언\n" + "----------------------");
 
         for (WiseSaying wiseSaying : wiseSayings) {
-            if (wiseSaying == null) break; // if절 {}안에서 break 앞에 내용이 없을 경우 생략 가능하다
+            if (wiseSaying == null) break;
             System.out.println("%d / %s / %s".formatted(wiseSaying.id, wiseSaying.author, wiseSaying.content));
         }
     }
 }
 
 class WiseSaying {
-    int id;
-    String content;
-    String author;
+    public int id;
+    public String content;
+    public String author;
 
     public WiseSaying(int id, String content, String author) {
         this.id = id;
