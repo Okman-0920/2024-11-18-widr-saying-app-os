@@ -1,6 +1,5 @@
 package org.example;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
@@ -41,7 +40,7 @@ class App {
                 wiseSayings[wiseSayingsSize] = wiseSaying;
                 wiseSayingsSize++;
 
-                System.out.println(Arrays.toString(wiseSayings));
+//                System.out.println(Arrays.toString(wiseSayings)); // 확인코드
 
                 System.out.println("%d번 명언이 등록되었습니다.".formatted(id));
                 // 내 코드: System.out.println(id + "번 명언이 등록되었습니다.");
@@ -50,10 +49,9 @@ class App {
                 System.out.println("번호 / 작가 / 명언\n" + "----------------------");
                                 // 이렇게 만들 경우, 가장 마지막에 저장된 1개만 온다. 단 저장안되면 실행오류남
 
-                try { // try-catch 일단 사용
-                    System.out.println("%d / %s / %s".formatted(wiseSayings[wiseSayingsSize].id, wiseSayings[wiseSayingsSize].author, wiseSayings[wiseSayingsSize].content));
-                } catch (NullPointerException e) {
-                    System.out.println("등록된 명언이 없습니다");
+                for (WiseSaying wiseSaying : wiseSayings) {
+                     if (wiseSaying == null) break;
+                    System.out.println("%d / %s / %s".formatted(wiseSaying.id, wiseSaying.author, wiseSaying.content));
                 }
             }
         }
