@@ -1,5 +1,6 @@
 package org.example;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
@@ -17,7 +18,9 @@ class App {
         Scanner scanner = new Scanner(System.in);
         System.out.println("== 명언 앱 ==");
         int lastId = 0; // 마지막으로 등록된 ID
-        WiseSaying lastWiseSaying = null;
+//        WiseSaying lastWiseSaying = null;
+        WiseSaying[] wiseSayings = new WiseSaying[100];
+        int wiseSayingsSize = 0; // 데이터가 0개 있다, 배열에 index라고 알면된다
 
         while(true) {
             System.out.print("명령) ");
@@ -35,10 +38,10 @@ class App {
                 int id = ++lastId;
 
                 WiseSaying wiseSaying = new WiseSaying(id, content, author);
+                wiseSayings[wiseSayingsSize] = wiseSaying;
+                wiseSayingsSize++;
 
-                lastWiseSaying = wiseSaying;
-
-                System.out.println(wiseSaying);
+                System.out.println(Arrays.toString(wiseSayings));
 
                 System.out.println("%d번 명언이 등록되었습니다.".formatted(id));
                 // 내 코드: System.out.println(id + "번 명언이 등록되었습니다.");
@@ -48,14 +51,10 @@ class App {
                                 // 이렇게 만들 경우, 가장 마지막에 저장된 1개만 온다. 단 저장안되면 실행오류남
 
                 try { // try-catch 일단 사용
-                    System.out.println("%d / %s / %s".formatted(lastWiseSaying.id, lastWiseSaying.author, lastWiseSaying.content));
+                    System.out.println("%d / %s / %s".formatted(wiseSayings[wiseSayingsSize].id, wiseSayings[wiseSayingsSize].author, wiseSayings[wiseSayingsSize].content));
                 } catch (NullPointerException e) {
-                    System.out.println("등록된 명언이 없습니다. 새로운 명언을 등록해주세요.");
+                    System.out.println("등록된 명언이 없습니다");
                 }
-
-                /*if (lastWiseSaying == null) { //if문으로 오류 대응
-                    System.out.println("등록된 명언이 없습니다. 새로운 명언을 등록해주세요.");
-                }*/
             }
         }
         scanner.close();
