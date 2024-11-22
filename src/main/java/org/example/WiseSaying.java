@@ -1,18 +1,19 @@
 package org.example;
 
-class WiseSaying {
+public class WiseSaying {
     public int id;
-    public String content;
     public String author;
+    public String content;
 
-    public WiseSaying(int id, String content, String author) {
+
+    public WiseSaying(int id, String author, String content) {
         this.id = id;
-        this.content = content;
         this.author = author;
-
-
-        @Override
-        public String toString () {
-            return "WiseSating{" + "id=" + id + ", content=" + content + '/' + ", author=" + author + '/' + '}';
-        }
+        this.content = content;
     }
+
+    @Override
+    public String toString() {
+        return "WiseSaying (id=%d, author=\"%s\", content=\"%s\")".formatted(id, author, content);
+    }
+}
