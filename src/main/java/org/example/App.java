@@ -37,6 +37,12 @@ public class App {
                 int id = Integer.parseInt(idStr);
 
                 actionDelete(id);
+            } else if (cmd.startsWith("수정")) {
+                String idStr = cmd.substring(6);
+                int id = Integer.parseInt(idStr);
+
+                actionModify(id);
+
             }
         }
         scanner.close();
@@ -72,7 +78,7 @@ public class App {
     private void actionList() {
         System.out.println("번호 / 작가 / 명언\n" + "----------------------");
 
-        for (WiseSaying wiseSaying : wiseSayings) {
+        for (WiseSaying wiseSaying : wiseSayings.reversed()) {
             System.out.println("%d / %s / %s".formatted(wiseSaying.getId(), wiseSaying.getAuthor(), wiseSaying.getContent()));
         }
     }
@@ -80,5 +86,35 @@ public class App {
     private void actionDelete(int id) {
         boolean removed = wiseSayings.removeIf(wiseSaying -> wiseSaying.getId() == id);
         if (removed) System.out.println("%s번 명언이 삭제되었습니다".formatted(id));
+        else System.out.println("%s번 명언은 존재하지 않습니다.".formatted(id));
     }
+
+    private void actionModify(int id) {
+        WiseSaying foundWiseSaying = null;
+
+        for (WiseSaying wiseSaying : wiseSayings) {
+            if (wiseSaying.getId() == id){
+                foundWiseSaying = wiseSaying;
+                break;
+            }
+
+            if (foundWiseSaying == null) {
+                System.out.println("%s번 명언은 존재하지 않습니다.".formatted(id));
+                return;
+            }
+            System.out.print("(기존)작가: %d".formatted(foundWiseSaying.getAuthor()));
+            System.out.print("작가:");
+            String author = scanner.nextLine();
+
+            System.out.print("(기존)작가: %d".formatted(foundWiseSaying.getContent()));
+            System.out.print("명언:");
+            String content = scanner.nextLine();
+
+            foundWiseSaying.setAuthor(author);
+            foundWiseSaying.setContent(content);
+
+            System.out.println("%s번 명언이 수정되었습니다.".formatted(id));
+        }
+    }
+
 }
