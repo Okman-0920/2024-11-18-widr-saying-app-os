@@ -31,10 +31,15 @@ public class App {
 
             } else if (cmd.equals("목록")) {
                 actionList();
+            
+            } else if (cmd.equals("삭제?id=1")) {
+                actionDelete(1);
             }
         }
         scanner.close();
     }
+
+
 
     private void makeSampleData() {
         addWiseSaying( "이순신 장군","나의 죽음을 적에게 알리지 말라.");
@@ -50,7 +55,7 @@ public class App {
         return wiseSaying;
     }
 
-
+// 액션 함수
     private void actionAdd() {
         System.out.print("작가:");
         String author = scanner.nextLine();
@@ -69,5 +74,10 @@ public class App {
         for (WiseSaying wiseSaying : wiseSayings) {
             System.out.println("%d / %s / %s".formatted(wiseSaying.getId(), wiseSaying.getAuthor(), wiseSaying.getContent()));
         }
+    }
+
+    private void actionDelete(int id) {
+        boolean removed = wiseSayings.removeIf(wiseSaying -> wiseSaying.getId() == id);
+        if (removed) System.out.println("%s번 명언이 삭제되었습니다".formatted(id));
     }
 }
