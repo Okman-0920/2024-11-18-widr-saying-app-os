@@ -32,14 +32,15 @@ public class App {
             } else if (cmd.equals("목록")) {
                 actionList();
             
-            } else if (cmd.equals("삭제?id=1")) {
-                actionDelete(1);
+            } else if (cmd.startsWith("삭제")) {
+                String idStr = cmd.substring(6);
+                int id = Integer.parseInt(idStr);
+
+                actionDelete(id);
             }
         }
         scanner.close();
     }
-
-
 
     private void makeSampleData() {
         addWiseSaying( "이순신 장군","나의 죽음을 적에게 알리지 말라.");
