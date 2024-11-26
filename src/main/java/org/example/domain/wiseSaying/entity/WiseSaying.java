@@ -25,11 +25,11 @@ public class WiseSaying {
     }
 
     public String setAuthor(String author) {
-        return this.author;
+        return this.author = author;
     }
 
     public String setContent(String content) {
-        return this.content;
+        return this.content = content;
     }
 
 
