@@ -38,12 +38,7 @@ public class App {
                 wiseSayingController.actionList(wiseSayings);
             
             } else if (cmd.startsWith("삭제")) {
-                // 명언을 삭제할 때
-                // 삭제?id=5 이 넘어온다는걸 App이 알아야하는가? = 아니다.
-                String idStr = cmd.substring(6);
-                int id = Integer.parseInt(idStr);
-
-                wiseSayingController.actionDelete(id, wiseSayings);
+                wiseSayingController.actionDelete(cmd, wiseSayings);
 
             } else if (cmd.startsWith("수정")) {
                 String idStr = cmd.substring(6);
