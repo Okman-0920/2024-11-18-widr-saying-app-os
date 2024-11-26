@@ -1,5 +1,8 @@
 package org.example;
 
+import org.example.domain.wiseSaying.controller.WiseSayingController;
+import org.example.domain.wiseSaying.entity.WiseSaying;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -8,11 +11,13 @@ public class App {
     private final Scanner scanner;
     private int lastId;
     private final List<WiseSaying> wiseSayings;
+    private final WiseSayingController wiseSayingController;
 
     public App() {
         scanner = new Scanner(System.in);
         lastId = 0;
         wiseSayings = new ArrayList<>();
+        wiseSayingController = new WiseSayingController();
     }
 
     public void run() {
@@ -30,7 +35,7 @@ public class App {
                 actionAdd();
 
             } else if (cmd.equals("목록")) {
-                actionList();
+                wiseSayingController.actionList(wiseSayings);
             
             } else if (cmd.startsWith("삭제")) {
                 String idStr = cmd.substring(6);
@@ -73,14 +78,6 @@ public class App {
         WiseSaying wiseSaying = addWiseSaying(author, content);
 
         System.out.println("%d번 명언이 등록되었습니다.".formatted(wiseSaying.getId()));
-    }
-
-    private void actionList() {
-        System.out.println("번호 / 작가 / 명언\n" + "----------------------");
-
-        for (WiseSaying wiseSaying : wiseSayings.reversed()) {
-            System.out.println("%d / %s / %s".formatted(wiseSaying.getId(), wiseSaying.getAuthor(), wiseSaying.getContent()));
-        }
     }
 
     private void actionDelete(int id) {

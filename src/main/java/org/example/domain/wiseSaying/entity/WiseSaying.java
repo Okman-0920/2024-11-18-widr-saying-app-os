@@ -1,4 +1,4 @@
-package org.example;
+package org.example.domain.wiseSaying.entity;
 
 public class WiseSaying {
     private final int id;
@@ -25,11 +25,11 @@ public class WiseSaying {
     }
 
     public String setAuthor(String author) {
-        this.author;
+        return this.author;
     }
 
     public String setContent(String content) {
-        this.content;
+        return this.content;
     }
 
 
