@@ -1,5 +1,6 @@
 package org.example;
 
+import org.example.domain.system.systemController.SystemController;
 import org.example.domain.wiseSaying.controller.WiseSayingController;
 
 import java.util.Scanner;
@@ -7,14 +8,18 @@ import java.util.Scanner;
 public class App {
     private final Scanner scanner;
     private final WiseSayingController wiseSayingController;
+    private final SystemController systemController;
 
     public App() {
         scanner = new Scanner(System.in);
-        wiseSayingController = new WiseSayingController();
+        wiseSayingController = new WiseSayingController(scanner);
+        systemController = new SystemController();
+
     }
 
     public void run() {
         System.out.println("== 명언 앱 ==");
+
         wiseSayingController.makeSampleData();
 
         while (true) {
@@ -22,9 +27,11 @@ public class App {
             final String cmd = scanner.nextLine();
 
             if (cmd.equals("종료")) {
+                systemController.actionExit();
                 break;
+
             } else if (cmd.equals("등록")) {
-                wiseSayingController.actionAdd(scanner);
+                wiseSayingController.actionAdd();
 
             } else if (cmd.equals("목록")) {
                 wiseSayingController.actionList();
@@ -33,7 +40,7 @@ public class App {
                 wiseSayingController.actionDelete(cmd);
 
             } else if (cmd.startsWith("수정")) {
-                wiseSayingController.actionModify(scanner, cmd);
+                wiseSayingController.actionModify(cmd);
 
             }
         }
