@@ -1,7 +1,7 @@
-package org.example.domain.wiseSaying.entity;
+package org.example.domain.domain.wiseSaying.entity;
 
 public class WiseSaying {
-    private final int id;
+    private int id;
     private String author;
     private String content;
 
@@ -24,6 +24,8 @@ public class WiseSaying {
         return content;
     }
 
+    public int setId(int id) { return this.id = id; }
+
     public String setAuthor(String author) {
         return this.author = author;
     }
@@ -32,9 +34,10 @@ public class WiseSaying {
         return this.content = content;
     }
 
-
     @Override
     public String toString() {
         return "WiseSaying (id=%d, author=\"%s\", content=\"%s\")".formatted(id, author, content);
     }
+
+
 }

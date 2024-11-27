@@ -1,4 +1,4 @@
-package org.example.domain.system.systemController;
+package org.example.dom.system.controller;
 
 public class SystemController {
     public void actionExit() {
